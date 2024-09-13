@@ -11,6 +11,11 @@ const songs = [
     { title: "Come and Get Your Love", artist: "Redbone", genre: "Rock" },
     { title: "I'm Not in Love", artist: "10cc", genre: "Pop" },
     { title: "Fooled Around and Fell in Love", artist: "Elvin Bishop", genre: "Rock" },
+    { title: "Don't Look Back In Anger", artist: "Oasis", genre: "Rock"},
+    { title: "Supersonic", artist: "Oasis", genre: "Rock"},
+    { title: "Time", artist: "Pink Floyd", genre: "Rock"},
+    { title: "Parklife", artist: "Blur", genre: "Rock"},
+    { title: "While My Guitar Gently Weeps", artist: "The Beatles", genre: "Rock"},
     // Feel free to add even more songs
 ];
 
@@ -19,16 +24,37 @@ const songs = [
 const guardians = {
     "Star-Lord": "Rock",
     "Gamora": "Pop",
+    "Drax": "Rock",
+    "Rocket": "R&B",
+    "Groot": "Pop"
     // Add preferences for Drax, Rocket, and Groot
 };
 
 // Function to generate playlist based on preferred genre
 function generatePlaylist(guardians, songs) {
-    // Use the map() function to create playlists for each Guardian
+    // Use the map() function const playlistsContainer = document.getElementById("playlists");to create playlists for each Guardian
     // Your code here
+    const playlistsContainer = document.getElementById("playlists");
+
+    Object.keys(guardians).map(guardian => {
+        const preffedGenre = guardians[guardian];
+        const playlist = songs.filter(song => song.genre === preffedGenre);
+
+        //CREATE PLAYLIST DIV
+        const playlistDiv = document.createElement('div');
+        playlistDiv.classList.add('playlist');
+
+        // ADD GUARDIAN'S NAME AS THE PLAYLIST TITLE
+        const guardianTitle = document.createElement('h2');
+        guardianTitle.textContent = `${Starlord}'s Playlist`;
+        playlist.appendChild(guardianTitle);
+    })
 }
 
 // Call generatePlaylist and display the playlists for each Guardian
 generatePlaylist(guardians, songs);
+
+
+
 
 
